@@ -18,6 +18,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.concurrent.CompletableFuture;
 import java.util.function.BiConsumer;
+import java.util.function.BiFunction;
 import java.util.function.Supplier;
 import java.util.stream.Collectors;
 
@@ -42,6 +43,10 @@ public class AsyncExecutionStrategy extends AbstractAsyncExecutionStrategy {
      */
     public AsyncExecutionStrategy(DataFetcherExceptionHandler exceptionHandler) {
         super(exceptionHandler);
+    }
+
+    public AsyncExecutionStrategy(BiFunction<Object, Object, Object> updateLocalContextMethod) {
+        super(updateLocalContextMethod);
     }
 
     @Override
