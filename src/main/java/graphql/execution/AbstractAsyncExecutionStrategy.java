@@ -8,6 +8,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.concurrent.CompletableFuture;
 import java.util.function.BiConsumer;
+import java.util.function.BiFunction;
 
 
 public abstract class AbstractAsyncExecutionStrategy extends ExecutionStrategy {
@@ -17,6 +18,10 @@ public abstract class AbstractAsyncExecutionStrategy extends ExecutionStrategy {
 
     public AbstractAsyncExecutionStrategy(DataFetcherExceptionHandler dataFetcherExceptionHandler) {
         super(dataFetcherExceptionHandler);
+    }
+
+    public AbstractAsyncExecutionStrategy(BiFunction<Object, Object, Object> updateLocalContextMethod) {
+        super(updateLocalContextMethod);
     }
 
     protected BiConsumer<List<ExecutionResult>, Throwable> handleResults(ExecutionContext executionContext, List<String> fieldNames, CompletableFuture<ExecutionResult> overallResult) {
