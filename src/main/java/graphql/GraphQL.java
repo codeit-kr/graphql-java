@@ -230,7 +230,7 @@ public class GraphQL {
         public Builder(GraphQLSchema graphQLSchema, BiFunction<Object, Object, Object> updateLocalContextMethod) {
             this.graphQLSchema = graphQLSchema;
             this.queryExecutionStrategy = new AsyncExecutionStrategy(updateLocalContextMethod);
-
+            this.mutationExecutionStrategy = new AsyncExecutionStrategy(updateLocalContextMethod);
         }
 
         public Builder schema(GraphQLSchema graphQLSchema) {
